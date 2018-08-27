@@ -1,0 +1,17 @@
+version: "2"
+services:
+ kattkart:
+   container_name: kattkart
+   restart: always
+   build: .
+   ports:
+     - "3000:3000"
+   links:
+     - kattakat_services
+ kattakat_services:
+   container_name: kattakat_services
+   image: kattakat_services
+   volumes:
+     - ./data:/data/db
+   ports:
+     - "27017:27017"
